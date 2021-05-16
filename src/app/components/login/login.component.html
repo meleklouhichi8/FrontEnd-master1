@@ -1,0 +1,315 @@
+<!-- ======= Property Search Section ======= -->
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">Search Property</h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x"></span>
+  <div class="box-collapse-wrap form">
+    <form class="form-a">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="form-group">
+            <label class="pb-2" for="Type">Keyword</label>
+            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="Type">Type</label>
+            <select class="form-control form-select form-control-a" id="Type">
+              <option>All Type</option>
+              <option>Parent</option>              
+              <option>KinderGarten</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="city">City</label>
+            <select class="form-control form-select form-control-a" id="city">
+              <option>All City</option>
+              <option>tunis</option>
+              <option>Ariana</option>
+              <option>Manouba</option>
+              <option>Bizerte</option>
+              <option>Sfax</option>
+              <option>Sousse</option>
+              <option>Mounastir</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-b">Search Property</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div><!-- End Property Search Section -->>
+
+<!-- ======= Header/Navbar ======= -->
+ <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+   <div class="container">
+     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+       <span></span>
+       <span></span>
+       <span></span>
+     </button>
+     <img src="/assets/Images/playhouse.png" width="120" height="120">
+     <a class="navbar-brand text-brand" routerLink="/" >Play<span class="color-b">house</span></a>
+
+     <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " routerLink="/Contact" >Contact</a>
+          </li>
+
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/KinderGarten" routerLinkActive="active" >KinderGarten</a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events/Activities</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item " routerLink="/Events" >Events</a>
+            <a class="dropdown-item " routerLink="/Activities" >Activities</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/Getstarted/Register" routerLinkActive="active">Get Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/Getstarted/Login">singIn</a>
+        </li>
+       </ul>
+     </div>
+     <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+   </div>
+ </nav><!-- End Header/Navbar -->
+<!--
+ <div class="intro intro-carousel swiper-container position-relative">
+
+  <div class="swiper-wrapper">
+    <div class="loginform">
+        <form class="login">
+            <input type="text" placeholder="Username"  />
+            <input type="password"  placeholder="Password"/>
+            <input type="submit" value="Login" (click)="onSubmit()"/>
+            <h5>Don't Have An Account ? <a routerLink="/Getstarted/Register" routerLinkActive="active"><u>Register</u></a></h5>
+          </form>
+    </div>
+  </div>
+</div>
+-->
+<div class="intro intro-carousel swiper-container position-relative">
+
+  <div class="swiper-wrapper">
+    <div class="loginform">
+        <form class="login">
+    
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="username.errors && f.submitted"
+        >
+          Username is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="password.errors && f.submitted"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block login-button">
+          LogIn
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{roles}}.
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+ <!-- ======= Footer ======= -->
+ <section class="section-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <div class="widget-a">
+          <div class="w-header-a">
+            <h3 class="w-title-a text-brand">EstateAgency</h3>
+          </div>
+          <div class="w-body-a">
+            <p class="w-text-a color-text-a">
+              Our Agency will provide the best Services for you ! 
+              For more Informations : 
+            </p>
+          </div>
+          <div class="w-footer-a">
+            <ul class="list-unstyled">
+              <li class="color-a">
+                <span class="color-text-a">Phone .</span> +216 72 680 680
+              </li>
+              <li class="color-a">
+                <span class="color-text-a">Email .</span> playhouse680@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4 section-md-t3">
+        <div class="widget-a">
+          <div class="w-header-a">
+            <h3 class="w-title-a text-brand">The Company</h3>
+          </div>
+          <div class="w-body-a">
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4 section-md-t3">
+        <div class="widget-a">
+          <div class="w-header-a">
+            <h3 class="w-title-a text-brand">International sites</h3>
+          </div>
+          <div class="w-body-a">
+            <ul class="list-unstyled">
+              <li class="item-list-a">
+                <i class="bi bi-chevron-right"></i> <a>Still working on providing worlwide Services</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="nav-footer">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="socials-a">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="bi bi-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="bi bi-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="bi bi-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="bi bi-linkedin" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright-footer">
+          <p class="copyright color-text-a">
+            &copy; Copyright
+            <span class="color-a">EstateAgency</span> All Rights Reserved.
+          </p>
+        </div>
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
